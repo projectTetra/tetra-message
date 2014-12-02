@@ -35,3 +35,13 @@ void Widget::otherSetMyName( const std::string& str ) noexcept
 {
   this->myName = "other" + str;
 }
+
+void Widget::onNotify( const Notify& notify ) noexcept
+{
+  ++this->notifyCount;
+}
+
+int Widget::getNotifyCount() const noexcept
+{
+  return this->notifyCount;
+}
