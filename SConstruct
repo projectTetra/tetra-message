@@ -3,7 +3,7 @@ env['CPPPATH'] = [ './inc', './depends/tetra-meta/inc' ]
 env['LIBPATH'] = [ './bin', './depends/tetra-meta/bin' ]
 env['LIBS'] = [ 'tetraMeta' ]
 env['CXX'] = 'clang++';
-env['CXXFLAGS'] = "-std=c++11"
+env['CXXFLAGS'] = [ '-std=c++11', '-ggdb' ]
 
 buildLib = env.Library('./bin/tetraMessage', Glob('src/*/*/*.cpp'))
 
