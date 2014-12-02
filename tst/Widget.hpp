@@ -23,6 +23,8 @@ public:
   const std::string& getMyName() const noexcept;
   
   void setMyName( const std::string& str ) noexcept;
+
+  void otherSetMyName( const std::string& str ) noexcept;
 };
 
 #endif

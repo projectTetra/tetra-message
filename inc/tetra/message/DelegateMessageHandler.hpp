@@ -18,7 +18,7 @@ class DelegateMessageHandler
 {
   DelegateFunction delegateFunction;
   void* pObj = nullptr;
-  meta::MetaData& messageMetaData;
+  const meta::MetaData& messageMetaData;
 
 public:
   DelegateMessageHandler( const DelegateMessageHandler& ) = default;
@@ -31,6 +31,7 @@ public:
   operator=( DelegateMessageHandler&& ) = default;
 
   bool operator<( const DelegateMessageHandler& ) const noexcept;
+  bool operator==( const DelegateMessageHandler& ) const noexcept;
 
   /**
    * Creates a DelegateMessageHandler from a class instance and a
@@ -64,9 +65,9 @@ public:
   void handleMessage( const meta::Variant& message ) const;
 
 private:
-  DelegateMessageHandler( void* pObj,
-                          DelegateFunction delegateFunction,
-                          meta::MetaData& messageMetaData ) noexcept;
+  DelegateMessageHandler(
+    void* pObj, DelegateFunction delegateFunction,
+    const meta::MetaData& messageMetaData ) noexcept;
 };
 
 } /* namespace message */

@@ -29,4 +29,9 @@ void Widget::setMyName( const std::string& str ) noexcept
 {
   std::cout << str << std::endl;
   this->myName = str;
-} 
+}
+
+void Widget::otherSetMyName( const std::string& str ) noexcept
+{
+  this->myName = "other" + str;
+}
