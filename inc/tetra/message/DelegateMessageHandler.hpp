@@ -18,7 +18,7 @@ class DelegateMessageHandler
 {
   DelegateFunction delegateFunction;
   void* pObj = nullptr;
-  const meta::MetaData& messageMetaData;
+  const meta::MetaData* messageMetaData;
 
 public:
   DelegateMessageHandler( const DelegateMessageHandler& ) = default;
@@ -64,7 +64,10 @@ public:
    **/
   void handleMessage( const meta::Variant& message ) const;
 
-  
+  /**
+   * Returns the MetaData instance for message type for this Delagate.
+   **/
+  const meta::MetaData& getMessageMetaData() const noexcept;
 
 private:
   DelegateMessageHandler(

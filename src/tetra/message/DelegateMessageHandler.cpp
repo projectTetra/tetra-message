@@ -23,10 +23,16 @@ DelegateMessageHandler::handleMessage( const Variant& message ) const
   delegateFunction( pObj, message );
 }
 
+const MetaData& DelegateMessageHandler::getMessageMetaData() const
+  noexcept
+{
+  return *this->messageMetaData;
+}
+
 DelegateMessageHandler::DelegateMessageHandler(
   void* pObj, DelegateFunction delegateFunction,
   const MetaData& metaData ) noexcept
   : delegateFunction{delegateFunction},
     pObj{pObj},
-    messageMetaData{metaData}
+    messageMetaData{&metaData}
 { }

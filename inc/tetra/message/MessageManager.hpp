@@ -65,6 +65,7 @@ public:
   void update() noexcept;
 
 private:
+  void dispatchMessage( const meta::Variant& message ) const noexcept;
   void swapReadWriteQueues() noexcept;
 
   std::vector<meta::Variant>& getReadQueue() noexcept;

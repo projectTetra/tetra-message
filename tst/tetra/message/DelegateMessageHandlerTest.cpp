@@ -17,6 +17,13 @@ SCENARIO( "Testing the DelegateMessageHandler",
 
   GIVEN( "A DelegateMessageHandler for a widget instance" )
   {
+    THEN( "The handler should have correctly identified the message "
+          "type" )
+    {
+      REQUIRE( MetaData::create<string>() ==
+               handler.getMessageMetaData() );
+    }
+
     THEN( "HandleMessage should correctly handle a valid message" )
     {
       string newName{"message"};
