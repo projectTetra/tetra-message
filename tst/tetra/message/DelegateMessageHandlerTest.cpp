@@ -49,17 +49,4 @@ SCENARIO( "Testing the DelegateMessageHandler",
       REQUIRE( !( handler == secondHandler ) );
     }
   }
-
-  GIVEN( "Two DelegateMessageHandlers to the same object, but for "
-         "different methods" )
-  {
-    DelegateMessageHandler thirdHandler =
-      DelegateMessageHandler::create( widget,
-                                      &Widget::otherSetMyName );
-
-    THEN( "The DelegateMessageHandlers should not evaluate as equal" )
-    {
-      REQUIRE( !( handler == thirdHandler ) );
-    }
-  }
 }

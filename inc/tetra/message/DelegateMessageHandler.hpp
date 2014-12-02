@@ -64,6 +64,8 @@ public:
    **/
   void handleMessage( const meta::Variant& message ) const;
 
+  
+
 private:
   DelegateMessageHandler(
     void* pObj, DelegateFunction delegateFunction,
