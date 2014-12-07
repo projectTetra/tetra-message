@@ -14,8 +14,7 @@ SCENARIO( "Using the MessageManager to manage messages",
   MessageManager messageManager{};
   Widget widget{};
 
-  messageManager.registerMessageHandler(
-    DelegateMessageHandler::create( widget, &Widget::setMyName ) );
+  messageManager.registerMessageHandler( widget, &Widget::setMyName );
 
   GIVEN( "A MessageManager with a DelegateMessageHandler registered "
          "to listen for string messages" )
@@ -45,9 +44,8 @@ SCENARIO( "Using the MessageManager to manage messages",
     THEN( "removing the message handler should make it not recieve "
           "any new messages" )
     {
-      messageManager.deregisterMessageHandler(
-        DelegateMessageHandler::create( widget,
-                                        &Widget::setMyName ) );
+      messageManager.deregisterMessageHandler( widget,
+                                               &Widget::setMyName );
 
       string oldName = widget.getMyName();
 
@@ -63,10 +61,8 @@ SCENARIO( "Using the MessageManager to manage messages",
          "registered for the same message type" )
   {
     Widget w1, w2;
-    messageManager.registerMessageHandler(
-      DelegateMessageHandler::create( w1, &Widget::onNotify ) );
-    messageManager.registerMessageHandler(
-      DelegateMessageHandler::create( w2, &Widget::onNotify ) );
+    messageManager.registerMessageHandler( w1, &Widget::onNotify );
+    messageManager.registerMessageHandler( w2, &Widget::onNotify );
 
     THEN( "each instance should recieve each message" )
     {
@@ -80,10 +76,8 @@ SCENARIO( "Using the MessageManager to manage messages",
       REQUIRE( w2.getNotifyCount() == 3 );
     }
 
-    messageManager.deregisterMessageHandler(
-      DelegateMessageHandler::create( w1, &Widget::onNotify ) );
-    messageManager.deregisterMessageHandler(
-      DelegateMessageHandler::create( w2, &Widget::onNotify ) );
+    messageManager.deregisterMessageHandler( w1, &Widget::onNotify );
+    messageManager.deregisterMessageHandler( w2, &Widget::onNotify );
   }
 }
 
