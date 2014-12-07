@@ -49,13 +49,26 @@ public:
 In this case, the onMessage method will, when registered, automatically be
 set up to handle Message objects when they are published.
 
-So how do publish messages?
+Publishing messages is simple:
 
 ```C++
-messageManager.queueMessage( Variant::create( Message{"test message", 5} ) );
- ```
+messageManager.queueMessage( Message{"test message", 5} );
 
+// publish all queued messages to be handled
+messageManager.update();
+```
 
+This would result in output like this: 
+```
+test message: 5
+```
+
+Finally, when your message-handling object (widget in our case) is ready to 
+be destroyed, then you need to deregister the handler. 
+
+```C++
+messageManager.deregisterMessage( widget, &Widget::onMessage );
+```
 
 
 
