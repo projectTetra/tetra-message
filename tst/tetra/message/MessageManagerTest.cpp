@@ -22,7 +22,7 @@ SCENARIO( "Using the MessageManager to manage messages",
     THEN(
       "Queuing an int message and updating should have no effect" )
     {
-      messageManager.queueMessage( Variant::create( 5 ) );
+      messageManager.queueMessage( 5 );
       messageManager.update();
 
       REQUIRE( widget.getMyName() == "Widget{1}" );
@@ -33,8 +33,8 @@ SCENARIO( "Using the MessageManager to manage messages",
     {
       string msg1{"test1"};
       string msg2{"test2"};
-      messageManager.queueMessage( Variant::create( msg1 ) );
-      messageManager.queueMessage( Variant::create( msg2 ) );
+      messageManager.queueMessage( msg1 );
+      messageManager.queueMessage( msg2 );
 
       messageManager.update();
 
@@ -49,8 +49,7 @@ SCENARIO( "Using the MessageManager to manage messages",
 
       string oldName = widget.getMyName();
 
-      messageManager.queueMessage(
-        Variant::create( string{"newName"} ) );
+      messageManager.queueMessage( string{"newName"} );
       messageManager.update();
 
       REQUIRE( widget.getMyName() == oldName );
@@ -66,10 +65,10 @@ SCENARIO( "Using the MessageManager to manage messages",
 
     THEN( "each instance should recieve each message" )
     {
-      messageManager.queueMessage( Variant::create( Notify{} ) );
-      messageManager.queueMessage( Variant::create( Notify{} ) );
-      messageManager.queueMessage( Variant::create( Notify{} ) );
-      messageManager.queueMessage( Variant::create( 4 ) );
+      messageManager.queueMessage( Notify{} );
+      messageManager.queueMessage( Notify{} );
+      messageManager.queueMessage( Notify{} );
+      messageManager.queueMessage( 4 );
       messageManager.update();
 
       REQUIRE( w1.getNotifyCount() == 3 );

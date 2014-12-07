@@ -56,6 +56,15 @@ public:
     void ( Object::*method )( const MessageType& ) ) noexcept;
 
   /**
+   * Queues the message to be published on the next call to update.
+   * (Note, this is just a shortcut for calling the queueMessage
+   * method that takes a Variant)
+   * @param message The mesage to be published.
+   **/
+  template <typename MessageType>
+  void queueMessage( MessageType&& message ) noexcept;
+
+  /**
    * Queues the message variant to be published on the next call to
    * update.
    * @param message The message to be published.
@@ -93,6 +102,13 @@ private:
   std::vector<meta::Variant>& getReadQueue() noexcept;
   std::vector<meta::Variant>& getWriteQueue() noexcept;
 };
+
+template <class MessageType>
+void MessageManager::queueMessage( MessageType&& message ) noexcept
+{
+  queueMessage( meta::Variant::create<MessageType>(
+    std::forward<MessageType&&>( message ) ) );
+}
 
 template <class Object, typename MessageType>
 void MessageManager::registerMessageHandler(
