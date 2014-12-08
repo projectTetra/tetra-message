@@ -9,7 +9,7 @@ buildLib = env.Library('./bin/tetraMessage', Glob('src/*/*/*.cpp'))
 
 env['CPPPATH'] += ['./tst']
 env['LIBS'] += [ 'tetraMessage' ]
-buildTests = env.Program('./bin/catchTests.out', 
+buildTests = env.Program('./bin/catchTests.out',
                          Glob('tst/*.cpp') + Glob('tst/*/*/*.cpp'));
 Depends(buildTests, buildLib)
 
