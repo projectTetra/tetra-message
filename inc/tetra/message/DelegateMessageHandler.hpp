@@ -52,7 +52,7 @@ public:
           void ( Class::*handler )( const Message& ) ) noexcept
   {
     return {&instance, DelegateFunctionBuilder( handler ),
-            meta::MetaData::create<Message>()};
+            meta::MetaData::get<Message>()};
   }
 
   /**

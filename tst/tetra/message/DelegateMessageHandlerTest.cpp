@@ -20,7 +20,7 @@ SCENARIO( "Testing the DelegateMessageHandler",
     THEN( "The handler should have correctly identified the message "
           "type" )
     {
-      REQUIRE( MetaData::create<string>() ==
+      REQUIRE( MetaData::get<string>() ==
                handler.getMessageMetaData() );
     }
 

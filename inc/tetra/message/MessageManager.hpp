@@ -27,7 +27,7 @@ class MessageManager
   MessageToDelegatesMap messageToDelegatesMap;
 
   // 2 message queues, one for reading one for writing
-  std::vector<meta::Variant> messageQueue[2]; 
+  std::vector<meta::Variant> messageQueue[2];
 
   int writeQueueIndex{0};
   int readQueueIndex{1};
