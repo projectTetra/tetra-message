@@ -36,6 +36,13 @@ void MessageManager::queueMessage( Variant&& message ) noexcept
   getWriteQueue().push_back( move( message ) );
 }
 
+void MessageManager::queueMessage( const Variant& msg ) noexcept
+{
+  Variant var;
+  var.copy( msg );
+  getWriteQueue().push_back( move( var ) );
+}
+
 void MessageManager::update() noexcept
 {
   swapReadWriteQueues();

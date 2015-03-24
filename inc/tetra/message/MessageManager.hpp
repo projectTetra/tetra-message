@@ -70,6 +70,7 @@ public:
    * @param message The message to be published.
    **/
   void queueMessage( meta::Variant&& message ) noexcept;
+  void queueMessage( const meta::Variant& message ) noexcept;
 
   /**
    * Broadcasts each message in the queue to their respective handlers
